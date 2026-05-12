@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @param <T> the type used as information/identifier for each vertex
  */
-public class Graph<T> implements GraphInterface<T> {
+public final class Graph<T> implements GraphInterface<T> {
 
     private int nVertices;
     private int nEdges;
