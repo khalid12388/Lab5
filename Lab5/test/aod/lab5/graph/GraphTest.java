@@ -13,16 +13,54 @@ import org.junit.jupiter.api.Test;
  */
 class GraphTest {
 
+    /**
+     * Talet noll.
+     */
     private static final int ZERO = 0;
+
+    /**
+     * Talet ett.
+     */
     private static final int ONE = 1;
+
+    /**
+     * Talet två.
+     */
     private static final int TWO = 2;
+
+    /**
+     * Talet tre.
+     */
     private static final int THREE = 3;
+
+    /**
+     * Talet fyra.
+     */
     private static final int FOUR = 4;
+
+    /**
+     * Talet fem.
+     */
     private static final int FIVE = 5;
+
+    /**
+     * Talet tio.
+     */
     private static final int TEN = 10;
+
+    /**
+     * Talet tjugo.
+     */
     private static final int TWENTY = 20;
+
+    /**
+     * Talet hundra.
+     */
     private static final int HUNDRED = 100;
 
+    /**
+     * Grafen som används i testerna.
+     */
     private Graph<String> graph;
 
     /**
