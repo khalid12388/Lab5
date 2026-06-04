@@ -82,14 +82,14 @@ public final class Graph<T> implements GraphInterface<T> {
             return;
         }
 
-        final Vertex<T> vertexA = vertices.get(infoA);
-        final Vertex<T> vertexB = vertices.get(infoB);
+        final Vertex<T> vertexa = vertices.get(infoA);
+        final Vertex<T> vertexb = vertices.get(infoB);
 
-        final Edge<T> edgeAB = new Edge<>(vertexA, vertexB);
-        final Edge<T> edgeBA = new Edge<>(vertexB, vertexA);
+        final Edge<T> edgeab = new Edge<>(vertexa, vertexb);
+        final Edge<T> edgeba = new Edge<>(vertexb, vertexa);
 
-        edges.get(infoA).add(edgeAB);
-        edges.get(infoB).add(edgeBA);
+        edges.get(infoA).add(edgeab);
+        edges.get(infoB).add(edgeba);
 
         nEdges++;
     }
@@ -102,13 +102,13 @@ public final class Graph<T> implements GraphInterface<T> {
      * @return true om kanten finns, annars false
      */
     private boolean hasEdge(final T infoA, final T infoB) {
-        final ArrayList<Edge<T>> edgeList = edges.get(infoA);
+        final ArrayList<Edge<T>> edgelist = edges.get(infoA);
 
-        if (edgeList == null) {
+        if (edgelist == null) {
             return false;
         }
 
-        for (final Edge<T> edge : edgeList) {
+        for (final Edge<T> edge : edgelist) {
             if (edge.getTo().getInfo().equals(infoB)) {
                 return true;
             }
@@ -123,13 +123,13 @@ public final class Graph<T> implements GraphInterface<T> {
             return;
         }
 
-        final int removedEdges = edges.get(info).size();
+        final int removededges = edges.get(info).size();
 
         for (final T key : edges.keySet()) {
             if (!key.equals(info)) {
-                final ArrayList<Edge<T>> edgeList = edges.get(key);
+                final ArrayList<Edge<T>> edgelist = edges.get(key);
 
-                removeEdgesToInfo(edgeList, info);
+                removeEdgesToInfo(edgelist, info);
             }
         }
 
@@ -137,23 +137,23 @@ public final class Graph<T> implements GraphInterface<T> {
         vertices.remove(info);
 
         nVertices--;
-        nEdges -= removedEdges;
+        nEdges -= removededges;
     }
 
     /**
      * Tar bort alla kanter i en lista som pekar på en given nod.
      *
-     * @param edgeList listan som kanter ska tas bort från
+     * @param edgelist listan som kanter ska tas bort från
      * @param info nodens identifierare som kanterna pekar på
      */
     private void removeEdgesToInfo(
-            final ArrayList<Edge<T>> edgeList,
+            final ArrayList<Edge<T>> edgelist,
             final T info) {
-        for (int i = edgeList.size() - 1; i >= 0; i--) {
-            final Edge<T> edge = edgeList.get(i);
+        for (int i = edgelist.size() - 1; i >= 0; i--) {
+            final Edge<T> edge = edgelist.get(i);
 
             if (edge.getTo().getInfo().equals(info)) {
-                edgeList.remove(i);
+                edgelist.remove(i);
             }
         }
     }
