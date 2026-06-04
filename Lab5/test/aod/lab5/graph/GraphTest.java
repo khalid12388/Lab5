@@ -8,51 +8,75 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testklass för Graph.
+ */
 class GraphTest {
+
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final int TWO = 2;
+    private static final int THREE = 3;
+    private static final int FOUR = 4;
+    private static final int FIVE = 5;
+    private static final int TEN = 10;
+    private static final int TWENTY = 20;
+    private static final int HUNDRED = 100;
 
     private Graph<String> graph;
 
+    /**
+     * Skapar en ny graf inför varje test.
+     */
     @BeforeEach
     void setUp() {
         graph = new Graph<>();
 
-        graph.addVertex(0, 0, "A");
-        graph.addVertex(3, 4, "B");
-        graph.addVertex(10, 10, "C");
+        graph.addVertex(ZERO, ZERO, "A");
+        graph.addVertex(THREE, FOUR, "B");
+        graph.addVertex(TEN, TEN, "C");
     }
 
-    // addVertex()
-
+    /**
+     * Testar att addVertex ökar antalet noder.
+     */
     @Test
     void testAddVertexIncreasesNumberOfVertices() {
-        graph.addVertex(5, 5, "D");
+        graph.addVertex(FIVE, FIVE, "D");
 
-        assertEquals(4, graph.numberOfVertices());
+        assertEquals(FOUR, graph.numberOfVertices());
     }
 
+    /**
+     * Testar att en duplicerad nod inte läggs till.
+     */
     @Test
     void testDuplicateVertexIsNotAdded() {
-        graph.addVertex(100, 100, "A");
+        graph.addVertex(HUNDRED, HUNDRED, "A");
 
-        assertEquals(3, graph.numberOfVertices());
+        assertEquals(THREE, graph.numberOfVertices());
     }
 
-    // getAllVertices()
-
+    /**
+     * Testar att getAllVertices returnerar rätt antal noder.
+     */
     @Test
     void testGetAllVerticesReturnsCorrectSize() {
-        List<Vertex<String>> vertices = graph.getAllVertices();
+        final List<Vertex<String>> vertices = graph.getAllVertices();
 
-        assertEquals(3, vertices.size());
+        assertEquals(THREE, vertices.size());
     }
 
+    /**
+     * Testar att getAllVertices innehåller en tillagd nod.
+     */
     @Test
     void testGetAllVerticesContainsAddedVertex() {
-        graph.addVertex(5, 5, "D");
+        graph.addVertex(FIVE, FIVE, "D");
 
         boolean found = false;
 
-        for (Vertex<String> vertex : graph.getAllVertices()) {
+        for (final Vertex<String> vertex : graph.getAllVertices()) {
             if (vertex.getInfo().equals("D")) {
                 found = true;
             }
@@ -61,51 +85,63 @@ class GraphTest {
         assertTrue(found);
     }
 
-    // addEdge()
-
+    /**
+     * Testar att addEdge ökar antalet kanter.
+     */
     @Test
     void testAddEdgeIncreasesNumberOfEdges() {
         graph.addEdge("A", "B");
 
-        assertEquals(1, graph.numberOfEdges());
+        assertEquals(ONE, graph.numberOfEdges());
     }
 
+    /**
+     * Testar att addEdge inte lägger till duplicerade kanter.
+     */
     @Test
     void testAddEdgeDoesNotAddDuplicateEdge() {
         graph.addEdge("A", "B");
         graph.addEdge("A", "B");
 
-        assertEquals(1, graph.numberOfEdges());
+        assertEquals(ONE, graph.numberOfEdges());
     }
 
-    // getEdges()
-
+    /**
+     * Testar att getEdges returnerar rätt antal kanter.
+     */
     @Test
     void testGetEdgesReturnsCorrectNumberOfEdges() {
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
 
-        assertEquals(2, graph.getEdges("A").size());
+        assertEquals(TWO, graph.getEdges("A").size());
     }
 
+    /**
+     * Testar att getEdges returnerar rätt ansluten nod.
+     */
     @Test
     void testGetEdgesReturnsCorrectConnectedVertex() {
         graph.addEdge("A", "B");
 
-        Edge<String> edge = graph.getEdges("A").get(0);
+        final Edge<String> edge = graph.getEdges("A").get(ZERO);
 
         assertEquals("B", edge.getTo().getInfo());
     }
 
-    // remove()
-
+    /**
+     * Testar att remove minskar antalet noder.
+     */
     @Test
     void testRemoveVertexDecreasesNumberOfVertices() {
         graph.remove("A");
 
-        assertEquals(2, graph.numberOfVertices());
+        assertEquals(TWO, graph.numberOfVertices());
     }
 
+    /**
+     * Testar att remove tar bort anslutna kanter.
+     */
     @Test
     void testRemoveVertexRemovesConnectedEdges() {
         graph.addEdge("A", "B");
@@ -113,35 +149,43 @@ class GraphTest {
 
         graph.remove("A");
 
-        assertEquals(0, graph.numberOfEdges());
+        assertEquals(ZERO, graph.numberOfEdges());
     }
 
-    // numberOfEdges()
-
+    /**
+     * Testar att antalet kanter först är noll.
+     */
     @Test
     void testNumberOfEdgesInitiallyZero() {
-        assertEquals(0, graph.numberOfEdges());
+        assertEquals(ZERO, graph.numberOfEdges());
     }
 
+    /**
+     * Testar antal kanter efter flera tillagda kanter.
+     */
     @Test
     void testNumberOfEdgesAfterAddingSeveralEdges() {
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
 
-        assertEquals(2, graph.numberOfEdges());
+        assertEquals(TWO, graph.numberOfEdges());
     }
 
-    // numberOfVertices()
-
+    /**
+     * Testar att antalet noder först är korrekt.
+     */
     @Test
     void testNumberOfVerticesInitiallyCorrect() {
-        assertEquals(3, graph.numberOfVertices());
+        assertEquals(THREE, graph.numberOfVertices());
     }
 
+    /**
+     * Testar antalet noder efter att en nod har lagts till.
+     */
     @Test
     void testNumberOfVerticesAfterAddingVertex() {
-        graph.addVertex(20, 20, "D");
+        graph.addVertex(TWENTY, TWENTY, "D");
 
-        assertEquals(4, graph.numberOfVertices());
+        assertEquals(FOUR, graph.numberOfVertices());
     }
 }
