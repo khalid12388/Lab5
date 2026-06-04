@@ -3,69 +3,70 @@ package aod.lab5.graph;
 import java.util.List;
 
 /**
- * An interface for a 2D graph structure consisting of vertices and edges.
- * Each vertex contains associated information of type T, and positions in
- * 2D space (x, y).
+ * Ett interface för en tvådimensionell graf med noder och kanter.
+ * Varje nod innehåller information av typen T och har en position
+ * i ett tvådimensionellt område.
  *
- * @param <T> the type of the information stored in each vertex
+ * @param <T> typen av information som lagras i varje nod
  *
  * @author Emilia Forslin
  */
 public interface GraphInterface<T> {
+
     /**
-     * Extracts and returns a list of all vertices stored in the graph.
+     * Returnerar en lista med alla noder som finns i grafen.
      *
-     * @return a list containing all {@link Vertex} objects
+     * @return en lista med alla {@link Vertex}-objekt
      */
     List<Vertex<T>> getAllVertices();
 
     /**
-     * Extracts and returns all edges connected to the vertex identified by the
-     * given info.
+     * Returnerar alla kanter som är kopplade till noden som identifieras av
+     * det angivna informationsvärdet.
      *
-     * @param info the identifier of the vertex
-     * @return a list containing all {@link Edge} objects connected to the vertex
+     * @param info nodens identifierare
+     * @return en lista med alla {@link Edge}-objekt kopplade till noden
      */
     List<Edge<T>> getEdges(T info);
 
     /**
-     * Adds a new {@link Vertex} to the graph at the given position.
+     * Lägger till en ny {@link Vertex} i grafen på den angivna positionen.
      *
-     * @param x the x coordinate
-     * @param y the y coordinate
-     * @param info the information and identifier of the vertex
+     * @param x x-koordinaten
+     * @param y y-koordinaten
+     * @param info nodens information och identifierare
      */
     void addVertex(double x, double y, T info);
 
     /**
-     * Adds an undirected edge between two vertices, internally stored as two
-     * directed {@link Edge} objects, one in each direction.
+     * Lägger till en oriktad kant mellan två noder. Kanten lagras internt som
+     * två riktade {@link Edge}-objekt, ett i varje riktning.
      *
-     * @param infoA the identifier of vertex A
-     * @param infoB the identifier of vertex B
+     * @param infoA identifierare för nod A
+     * @param infoB identifierare för nod B
      */
     void addEdge(T infoA, T infoB);
 
     /**
-     * Removes the {@link Vertex} object identified by info, and all
-     * {@link Edge} objects connected to it.
+     * Tar bort {@link Vertex}-objektet som identifieras av info och alla
+     * {@link Edge}-objekt som är kopplade till det.
      *
-     * @param info the identifier of the vertex to remove
+     * @param info identifierare för noden som ska tas bort
      */
     void remove(T info);
 
     /**
-     * Returns the number of {@link Edge} objects in the graph. One double edge
-     * between two vertices is counted as one edge.
+     * Returnerar antalet {@link Edge}-objekt i grafen. En dubbel kant mellan
+     * två noder räknas som en kant.
      *
-     * @return number of edges
+     * @return antal kanter
      */
     int numberOfEdges();
 
     /**
-     * Returns the number of {@link Vertex} objects in the graph.
+     * Returnerar antalet {@link Vertex}-objekt i grafen.
      *
-     * @return number of vertices
+     * @return antal noder
      */
     int numberOfVertices();
 }
