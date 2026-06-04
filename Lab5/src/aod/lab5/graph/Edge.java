@@ -3,102 +3,103 @@ package aod.lab5.graph;
 import java.awt.Color;
 
 /**
- * Represents a directed edge between two vertices.
+ * Representerar en riktad kant mellan två noder.
  *
- * @param <T> the type of information stored in the vertices
+ * @param <T> typen av information som lagras i noderna
  */
 public final class Edge<T> {
 
     /**
-     * The start vertex of the edge.
+     * Kantens startnod.
      */
-    private Vertex<T> from;
+    private final Vertex<T> from;
 
     /**
-     * The end vertex of the edge.
+     * Kantens slutnod.
      */
-    private Vertex<T> to;
+    private final Vertex<T> to;
 
     /**
-     * The distance between the vertices.
+     * Avståndet mellan noderna.
      */
-    private double distance;
+    private final double distance;
 
     /**
-     * The color of the edge.
+     * Kantens färg.
      */
     private Color color;
 
     /**
-     * Creates a new edge between two vertices.
+     * Skapar en ny kant mellan två noder.
      *
-     * @param startVertex the start vertex
-     * @param endVertex the end vertex
+     * @param startVertex startnoden
+     * @param endVertex slutnoden
      */
     public Edge(final Vertex<T> startVertex, final Vertex<T> endVertex) {
-        this.from = startVertex;
-        this.to = endVertex;
-        this.distance = calculateDistance(startVertex, endVertex);
-        this.color = Color.GRAY;
+        from = startVertex;
+        to = endVertex;
+        distance = calculateDistance(startVertex, endVertex);
+        color = Color.GRAY;
     }
 
     /**
-     * Calculates the distance between two vertices.
+     * Beräknar avståndet mellan två noder.
      *
-     * @param startVertex the start vertex
-     * @param endVertex the end vertex
-     * @return the distance between the vertices
+     * @param startVertex startnoden
+     * @param endVertex slutnoden
+     * @return avståndet mellan noderna
      */
-    private double calculateDistance(final Vertex<T> startVertex,
+    private double calculateDistance(
+            final Vertex<T> startVertex,
             final Vertex<T> endVertex) {
-        double dx = endVertex.getX() - startVertex.getX();
-        double dy = endVertex.getY() - startVertex.getY();
+        final double dx = endVertex.getX() - startVertex.getX();
+        final double dy = endVertex.getY() - startVertex.getY();
 
         return Math.sqrt(dx * dx + dy * dy);
     }
 
     /**
-     * Returns the start vertex.
+     * Returnerar startnoden.
      *
-     * @return the start vertex
+     * @return startnoden
      */
     public Vertex<T> getFrom() {
         return from;
     }
 
     /**
-     * Returns the end vertex.
+     * Returnerar slutnoden.
      *
-     * @return the end vertex
+     * @return slutnoden
      */
     public Vertex<T> getTo() {
         return to;
     }
 
     /**
-     * Returns the distance of the edge.
+     * Returnerar kantens avstånd.
      *
-     * @return the distance
+     * @return avståndet
      */
     public double getDistance() {
         return distance;
     }
 
     /**
-     * Returns the edge color.
+     * Returnerar kantens färg.
      *
-     * @return the edge color
+     * @return kantens färg
      */
     public Color getColor() {
         return color;
     }
 
     /**
-     * Sets the edge color.
+     * Ändrar kantens färg.
      *
-     * @param newColor the new color
+     * @param newColor den nya färgen
      */
     public void setColor(final Color newColor) {
-        this.color = newColor;
+        color = newColor;
     }
 }
