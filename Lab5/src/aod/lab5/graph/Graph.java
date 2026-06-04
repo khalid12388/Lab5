@@ -5,34 +5,34 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * A graph structure that stores vertices and undirected edges.
+ * En grafstruktur som lagrar noder och oriktade kanter.
  *
- * @param <T> the type used as information/identifier for each vertex
+ * @param <T> typen som används som information för varje nod
  */
 public final class Graph<T> implements GraphInterface<T> {
 
     /**
-     * Number of vertices in the graph.
+     * Antal noder i grafen.
      */
     private int nVertices;
 
     /**
-     * Number of undirected edges in the graph.
+     * Antal oriktade kanter i grafen.
      */
     private int nEdges;
 
     /**
-     * All vertices stored by their information value.
+     * Alla noder lagrade efter deras informationsvärde.
      */
     private final HashMap<T, Vertex<T>> vertices;
 
     /**
-     * Adjacency lists for all vertices.
+     * Grannlistor för alla noder.
      */
     private final HashMap<T, ArrayList<Edge<T>>> edges;
 
     /**
-     * Creates an empty graph.
+     * Skapar en tom graf.
      */
     public Graph() {
         nVertices = 0;
@@ -95,11 +95,11 @@ public final class Graph<T> implements GraphInterface<T> {
     }
 
     /**
-     * Checks if an edge already exists between two vertices.
+     * Kontrollerar om en kant redan finns mellan två noder.
      *
-     * @param infoA the first vertex identifier
-     * @param infoB the second vertex identifier
-     * @return true if an edge exists, otherwise false
+     * @param infoA identifierare för första noden
+     * @param infoB identifierare för andra noden
+     * @return true om kanten finns, annars false
      */
     private boolean hasEdge(final T infoA, final T infoB) {
         final ArrayList<Edge<T>> edgeList = edges.get(infoA);
@@ -141,10 +141,10 @@ public final class Graph<T> implements GraphInterface<T> {
     }
 
     /**
-     * Removes all edges in a list that point to a given vertex.
+     * Tar bort alla kanter i en lista som pekar på en given nod.
      *
-     * @param edgeList the list to remove edges from
-     * @param info the vertex identifier to remove edges to
+     * @param edgeList listan som kanter ska tas bort från
+     * @param info nodens identifierare som kanterna pekar på
      */
     private void removeEdgesToInfo(
             final ArrayList<Edge<T>> edgeList,
