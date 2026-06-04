@@ -3,116 +3,118 @@ package aod.lab5.graph;
 import java.awt.Color;
 
 /**
- * Represents a vertex in a graph.
+ * Representerar en nod i en graf.
  *
- * @param <T> the type of information stored in the vertex
+ * @param <T> typen av information som lagras i noden
  */
 public final class Vertex<T> {
 
     /**
-     * Information used to identify the vertex.
+     * Information som används för att identifiera noden.
      */
     private T info;
 
     /**
-     * The x-coordinate of the vertex.
+     * Nodens x-koordinat.
      */
     private double x;
 
     /**
-     * The y-coordinate of the vertex.
+     * Nodens y-koordinat.
      */
     private double y;
 
     /**
-     * The color of the vertex.
+     * Nodens färg.
      */
     private Color color;
 
     /**
-     * Creates a new vertex.
+     * Skapar en ny nod.
      *
-     * @param xCoordinate the x-coordinate
-     * @param yCoordinate the y-coordinate
-     * @param vertexInfo the information stored in the vertex
+     * @param xCoordinate x-koordinaten
+     * @param yCoordinate y-koordinaten
+     * @param vertexInfo informationen som lagras i noden
      */
-    public Vertex(final double xCoordinate, final double yCoordinate,
+    public Vertex(
+            final double xCoordinate,
+            final double yCoordinate,
             final T vertexInfo) {
-        this.x = xCoordinate;
-        this.y = yCoordinate;
-        this.info = vertexInfo;
-        this.color = Color.BLACK;
+        x = xCoordinate;
+        y = yCoordinate;
+        info = vertexInfo;
+        color = Color.BLACK;
     }
 
     /**
-     * Returns the information stored in the vertex.
+     * Returnerar informationen som lagras i noden.
      *
-     * @return the vertex information
+     * @return nodens information
      */
     public T getInfo() {
         return info;
     }
 
     /**
-     * Returns the x-coordinate.
+     * Returnerar x-koordinaten.
      *
-     * @return the x-coordinate
+     * @return x-koordinaten
      */
     public double getX() {
         return x;
     }
 
     /**
-     * Returns the y-coordinate.
+     * Returnerar y-koordinaten.
      *
-     * @return the y-coordinate
+     * @return y-koordinaten
      */
     public double getY() {
         return y;
     }
 
     /**
-     * Returns the vertex color.
+     * Returnerar nodens färg.
      *
-     * @return the vertex color
+     * @return nodens färg
      */
     public Color getColor() {
         return color;
     }
 
     /**
-     * Sets the vertex information.
+     * Ändrar nodens information.
      *
-     * @param newInfo the new information
+     * @param newInfo den nya informationen
      */
     public void setInfo(final T newInfo) {
-        this.info = newInfo;
+        info = newInfo;
     }
 
     /**
-     * Sets the x-coordinate.
+     * Ändrar x-koordinaten.
      *
-     * @param newX the new x-coordinate
+     * @param newX den nya x-koordinaten
      */
     public void setX(final double newX) {
-        this.x = newX;
+        x = newX;
     }
 
     /**
-     * Sets the y-coordinate.
+     * Ändrar y-koordinaten.
      *
-     * @param newY the new y-coordinate
+     * @param newY den nya y-koordinaten
      */
     public void setY(final double newY) {
-        this.y = newY;
+        y = newY;
     }
 
     /**
-     * Sets the vertex color.
+     * Ändrar nodens färg.
      *
-     * @param newColor the new color
+     * @param newColor den nya färgen
      */
     public void setColor(final Color newColor) {
-        this.color = newColor;
+        color = newColor;
     }
 }
